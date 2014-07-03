@@ -1,0 +1,32 @@
+{
+  "name": "",
+  "version": "0.0.0",
+  "devDependencies": {
+    "connect": "^2.14.5",
+    "gulp": "^3.6.2",
+    "gulp-clean": "~0.2.4",
+    "gulp-cleanhtml": "0.0.2",
+    "gulp-csslint": "~0.1.3",
+    "gulp-csso": "^0.2.6",
+    "gulp-file-include": "0.0.3",
+    "gulp-filesize": "0.0.6",
+    "gulp-filter": "^0.4.1",
+    "gulp-ftp": "^0.2.1",
+    "gulp-htmlhint": "0.0.7",
+    "gulp-jshint": "~1.4.0",
+    "gulp-jsonminify": "0.0.1",
+    "gulp-jsvalidate": "~0.1.1",
+    "gulp-livereload": "^1.5.0",
+    "gulp-minify-css": "~0.3.0",
+    "gulp-rename": "~1.1.0",
+    "gulp-replace": "^0.2.0",
+    "gulp-rev": "^0.3.2",
+    "gulp-rev-replace": "^0.1.0",
+    "gulp-sitemap": "^0.2.1",
+    "gulp-strip-debug": "~0.1.1",
+    "gulp-uglify": "~0.2.1",
+    "gulp-useref": "^0.4.3",
+    "gulp-xml-editor": "^2.0.2",
+    "run-sequence": "^0.3.6"
+  }
+}

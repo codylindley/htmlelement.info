@@ -1,0 +1,17 @@
+{
+  "name": "cody lindley",
+  "version": "0.0.0",
+  "authors": [
+    "Cody Lindley <contact@codylindley.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "/src/bower"
+  ],
+  "dependencies": {
+    "jquery": "~2.1.0",
+    "scrollup": "~2.3.2"
+  }
+}
