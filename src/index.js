@@ -68,7 +68,7 @@
     });
 
 
-	$('#categoriesGrid, #attributesGrid, #eventsGrid').kendoGrid({
+	$('#categoriesGrid, #attributesGrid, #eventsGrid, #byVersionGrid').kendoGrid({
 		 sortable: true,
          filterable: true,
          columnMenu: true,
