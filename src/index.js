@@ -44,11 +44,18 @@
 
     var $menu = $('.pure-menu a');
 
-    $menu.bind('click',function(e){
-    	$menu.closest('li').removeClass('pure-menu-selected');
-    	$(this).closest('li').addClass('pure-menu-selected');
+    $('#elementsGrid,#categoriesGrid,#attributesGrid,#eventsGrid,#byVersionGrid').on('scrollSpy:enter', function() {
+    	console.log($(this));
+	    $('#menu').find('a[href="#'+$(this).prev('h2').attr('id')+'"]').closest('li').addClass('pure-menu-selected');
+	});
 
+	$('#elementsGrid,#categoriesGrid,#attributesGrid,#eventsGrid,#byVersionGrid').on('scrollSpy:exit', function() {
+	    $('#menu').find('a[href="#'+$(this).prev('h2').attr('id')+'"]').closest('li').removeClass('pure-menu-selected');
+	});
 
+	$('#elementsGrid,#categoriesGrid,#attributesGrid,#eventsGrid,#byVersionGrid').scrollSpy();
+
+    $menu.on('click',function(e){
     	$('html, body').animate({
         	scrollTop: $($(e.target).attr('href')).offset().top
     	}, 500);
@@ -75,7 +82,7 @@
     });
 
 
-	$('#categoriesGrid, #attributesGrid, #eventsGrid, #byVersionGrid').kendoGrid({
+	$('#categoriesGrid table, #attributesGrid table, #eventsGrid table, #byVersionGrid table').kendoGrid({
 		 sortable: true,
          filterable: true,
          columnMenu: {
@@ -98,7 +105,7 @@
 		return argA > argB ? 1 : (argA < argB ? -1 : 0);
 	};
 
-	$('#elementsGrid').kendoGrid({
+	$('#elementsGrid table').kendoGrid({
 		columns:[
 			{
 				field:'element',
