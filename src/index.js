@@ -44,9 +44,16 @@
 
     var $menu = $('.pure-menu a');
 
-    $menu.bind('click',function(){
+    $menu.bind('click',function(e){
     	$menu.closest('li').removeClass('pure-menu-selected');
     	$(this).closest('li').addClass('pure-menu-selected');
+
+
+    	$('html, body').animate({
+        	scrollTop: $($(e.target).attr('href')).offset().top
+    	}, 500);
+
+    	return false;
     });
 
     $('#scrollUp').click(function(){
@@ -71,7 +78,10 @@
 	$('#categoriesGrid, #attributesGrid, #eventsGrid, #byVersionGrid').kendoGrid({
 		 sortable: true,
          filterable: true,
-         columnMenu: true,
+         columnMenu: {
+			sortable: false,
+			filterable: true
+		},
          resizable: true,
          reorderable: true,
          mobile: true
