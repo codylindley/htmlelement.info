@@ -45,7 +45,6 @@
     var $menu = $('.pure-menu a');
 
     $('#elementsGrid,#categoriesGrid,#attributesGrid,#eventsGrid,#byVersionGrid').on('scrollSpy:enter', function() {
-    	console.log($(this));
 	    $('#menu').find('a[href="#'+$(this).prev('h2').attr('id')+'"]').closest('li').addClass('pure-menu-selected');
 	});
 
@@ -58,7 +57,7 @@
     $menu.on('click',function(e){
     	$('html, body').animate({
         	scrollTop: $($(e.target).attr('href')).offset().top
-    	}, 500);
+    	}, 2000);
 
     	return false;
     });
