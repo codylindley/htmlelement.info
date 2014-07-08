@@ -57,8 +57,6 @@
 	    $('#menu').find('a[href="#'+$(this).prev('h2').attr('id')+'"]').closest('li').removeClass('pure-menu-selected');
 	});
 
-	$('#elementsGrid,#categoriesGrid,#attributesGrid,#eventsGrid,#byVersionGrid').scrollSpy();
-
     $menu.on('click',function(e){
     	$('html, body').animate({
         	scrollTop: $($(e.target).attr('href')).offset().top
@@ -72,7 +70,8 @@
     });
 
     //correct links in whatwg tables
-    $('table').bind('mousedown','a',function(e){
+    $('table.whatwg').bind('mousedown','a',function(e){
+
     	var $this = $(e.target);
     	var oldHref = $this.attr('href');
     	$this
@@ -81,24 +80,16 @@
     	e.preventDefault();
     });
 
-    $('table').bind('mouseup','a',function(e){
+    $('table.whatwg').bind('mouseup','a',function(e){
     	var $this = $(e.target).trigger('click');
     	e.preventDefault();
     });
 
+    $('table.w3c a').each(function(){
+    	$(this).attr('target','_blank');
+    });
+
     //create grids
-    
-	$('#categoriesGrid table, #attributesGrid table, #eventsGrid table, #byVersionGrid table').kendoGrid({
-		 sortable: true,
-         filterable: true,
-         columnMenu: {
-			sortable: false,
-			filterable: true
-		},
-         resizable: true,
-         reorderable: true,
-         mobile: true
-	});
 
 	var compareFunc = function (field, a, b){
 
@@ -110,6 +101,55 @@
 
 		return argA > argB ? 1 : (argA < argB ? -1 : 0);
 	};
+
+	$('#categoriesGrid table').kendoGrid({
+		 sortable: true,
+ 
+         columnMenu: {
+			sortable: false,
+			filterable: false
+		},
+         resizable: true,
+         reorderable: true,
+         mobile: true
+	});
+
+	$('#attributesGrid table').kendoGrid({
+		 sortable: true,
+         columnMenu: {
+			sortable: false,
+			filterable: false
+		},
+         resizable: true,
+         reorderable: true,
+         mobile: true
+	});
+
+	$('#eventsGrid table').kendoGrid({
+		 sortable: true,
+         columnMenu: {
+			sortable: false,
+			filterable: false
+		},
+         resizable: true,
+         reorderable: true,
+         mobile: true
+	});
+
+	$('#byVersionGrid table').kendoGrid({
+		 sortable: true,
+         columnMenu: {
+			sortable: false,
+			filterable: false
+		},
+         resizable: true,
+         reorderable: true,
+         mobile: true,
+         dataBound: function(e) {
+			this.hideColumn(4);
+			this.hideColumn(5);
+		}
+	});
 
 	$('#elementsGrid table').kendoGrid({
 		columns:[
@@ -143,17 +183,20 @@
 			},
 		],
 		sortable:true,
-		filterable: true,
 		columnMenu: {
 			sortable: false,
-			filterable: true
+			filterable: false
 		},
 		resizable: true,
 		reorderable: true,
 		mobile: true,
 		dataBound: function(e) {
+			this.hideColumn(2);
 			this.hideColumn(3);
 			this.hideColumn(4);
+			$('#elementsGrid,#categoriesGrid,#attributesGrid,#eventsGrid,#byVersionGrid').scrollSpy();
+			$('.spinner').remove();
+			$('.content').show();
 		}
 	});
 	
