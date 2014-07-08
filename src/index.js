@@ -1,5 +1,6 @@
 (function(win){
 
+	//fill... for old ES3
 	if (!String.prototype.trim) {
 		String.prototype.trim = function () {
 			return this.replace(/^\s+|\s+$/g, '');
@@ -9,7 +10,10 @@
 	var global = win;
 	var doc = global.document;
 
+	//setup scrollUp
 	$.scrollUp();
+
+	//code from pure.io template, non-jquery
 
     var layout   = doc.getElementById('layout'),
         menu     = doc.getElementById('menu'),
@@ -42,6 +46,7 @@
         toggleClass(menuLink, active);
     };
 
+    //setup scroll spy and animated scroll when clicking on menu item
     var $menu = $('.pure-menu a');
 
     $('#elementsGrid,#categoriesGrid,#attributesGrid,#eventsGrid,#byVersionGrid').on('scrollSpy:enter', function() {
@@ -66,6 +71,7 @@
     	$menu.closest('li').removeClass('pure-menu-selected');
     });
 
+    //correct links in whatwg tables
     $('table').bind('mousedown','a',function(e){
     	var $this = $(e.target);
     	var oldHref = $this.attr('href');
@@ -80,7 +86,8 @@
     	e.preventDefault();
     });
 
-
+    //create grids
+    
 	$('#categoriesGrid table, #attributesGrid table, #eventsGrid table, #byVersionGrid table').kendoGrid({
 		 sortable: true,
          filterable: true,
