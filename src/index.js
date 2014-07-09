@@ -60,7 +60,7 @@
     $menu.on('click',function(e){
     	$('html, body').animate({
         	scrollTop: $($(e.target).attr('href')).offset().top
-    	}, 2000);
+    	}, 300);
 
     	return false;
     });
@@ -103,6 +103,20 @@
 	};
 
 	$('#categoriesGrid table').kendoGrid({
+		columns:[
+			{
+				field:'category',
+				sortable:{compare:function (a,b){return compareFunc('category',a,b);}}
+			},
+			{
+				field:'elements',
+				sortable:{compare:function (a,b){return compareFunc('elements',a,b);}}
+			},
+			{
+				field:'exceptions',
+				sortable:{compare:function (a,b){return compareFunc('exceptions',a,b);}}
+			}
+		],
 		 sortable: true,
  
          columnMenu: {
@@ -115,6 +129,24 @@
 	});
 
 	$('#attributesGrid table').kendoGrid({
+		columns:[
+			{
+				field:'attribute',
+				sortable:{compare:function (a,b){return compareFunc('attribute',a,b);}}
+			},
+			{
+				field:'elements',
+				sortable:{compare:function (a,b){return compareFunc('elements',a,b);}}
+			},
+			{
+				field:'description',
+				sortable:{compare:function (a,b){return compareFunc('description',a,b);}}
+			},
+			{
+				field:'value',
+				sortable:{compare:function (a,b){return compareFunc('value',a,b);}}
+			}
+		],
 		 sortable: true,
          columnMenu: {
 			sortable: false,
@@ -126,6 +158,24 @@
 	});
 
 	$('#eventsGrid table').kendoGrid({
+		columns:[
+			{
+				field:'event',
+				sortable:{compare:function (a,b){return compareFunc('event',a,b);}}
+			},
+			{
+				field:'interface',
+				sortable:{compare:function (a,b){return compareFunc('interface',a,b);}}
+			},
+			{
+				field:'targets',
+				sortable:{compare:function (a,b){return compareFunc('targets',a,b);}}
+			},
+			{
+				field:'description',
+				sortable:{compare:function (a,b){return compareFunc('description',a,b);}}
+			}
+		],
 		 sortable: true,
          columnMenu: {
 			sortable: false,
@@ -137,7 +187,7 @@
 	});
 
 	$('#byVersionGrid table').kendoGrid({
-		 sortable: true,
+		 sortable: false,
          columnMenu: {
 			sortable: false,
 			filterable: false
@@ -180,7 +230,7 @@
 			{
 				field:'interface',
 				sortable:{compare:function (a,b){return compareFunc('interface',a,b);}}
-			},
+			}
 		],
 		sortable:true,
 		columnMenu: {
